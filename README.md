@@ -38,17 +38,22 @@ CTFd Docs:      https://docs.ctfd.io/docs <br>
 2. Run the following commands:
 ```
 sudo apt-get update
+maybe sudo apt-get upgrade
 sudo apt-get install docker
 sudo apt-get install docker-compose
+sudo apt-get install nginx ?
+sudo apt-get install ufw ?
+something else here 
 
-git clone git clone https://github.com/CTFd/CTFd.git
+git clone https://github.com/CTFd/CTFd.git
 cd CTFd
 ```
-3. Inside the CTFd folder there's a file called docker-compose.yml, open that up with your favorite text editor and under services > environment: you're going to add a new environment variable called `SECRET_KEY` i.e. `SECRET_KEY=Rd42RfGayKozvU2DBfsC` once it's added save and exit the text editor
-4. Now, from within the CTFd folder that contains docker-compose.yml, run:
+3. Inside the CTFd folder there's a file called docker-compose.yml, open that up with your favorite text editor and under services > environment: you're going to add a new environment variable called `SECRET_KEY` and give it a random string i.e. `SECRET_KEY=Rd42RfGayKozvU2DBfsC` 
+4. Still within the file, find the variable called WORKERS and change it from 1 to somewhere between about 4 and 10, the more users you expect, the higher it should be, but also more taxing on the system. Once it's added save and exit the text editor
+6. Now, from within the CTFd folder that contains docker-compose.yml, run:
 ```
 sudo docker-compose up -d 
 ```
-- Note: This step will take a while to run, once it's complete 
+- Note: This step will take a while to run, once it's complete use `sudo lsof -i -P -n | grep LISTEN` to check your open ports, if both 80 and 8000 both say docker-pr then exit out of the console and use the lightsail console to stop the machine, then start it again and wait a few minutes for it to boot up. Once it's back on connect using SSH and run `sudo lsof -i -P -n | grep LISTEN` again, 
 
 
