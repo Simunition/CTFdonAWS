@@ -1,4 +1,6 @@
 # How to Host CTFd on AWS Lightsail
+This initial post has been upgraded to be hosted on my personal blog which you can find at https://simscyberops.com.
+
 This guide details the process for setting up a lightsail instance with a static IP in AWS, configuring CTFd inside of a docker container on the instance with Nginx acting as a reverse proxy, using AWS CloudFront to serve as a CDN for the website, and finally configuring a custom domain with SSL/TLS certificates to access your new CTF!
 
 Prerequisites: An AWS account, and approximately $6-20 in monthly AWS costs, and a few hours of your time. Optional costs include approximately $10-20/year for a custom domain name
